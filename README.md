@@ -1,0 +1,2 @@
+ScreenRefresher是一个简单实用的console下进度条类
+可以实现一行数据的动态刷新
