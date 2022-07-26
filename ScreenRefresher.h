@@ -11,10 +11,10 @@
 class ProgressBarDemo : public Noncopyable
 {
 public:
-    ProgressBarDemo(const std::string &measure, long amount) : measure_(measure), amount_(amount) ,isCompleted(false){}
+    ProgressBarDemo(const std::string &measure, long amount) : measure_(measure), amount_(amount) ,isCompleted_(false){}
 
-    bool IsCompleted() {return isCompleted;}
-    std::string getBar(long number)
+    bool IsCompleted() {return isCompleted_;}
+    std::string GetBar(long number)
     {
         static int sBarLength = 60;
         std::string result;
@@ -33,7 +33,7 @@ public:
         result += "]" + std::to_string(number) + " " + measure_ + " (" + std::to_string(first) + "." + std::to_string(second) + "%)";
         if (first == 100)
         {
-            isCompleted = true;
+            isCompleted_ = true;
             result+="\n";
         }
         return result;
@@ -42,7 +42,7 @@ public:
 private:
     std::string measure_;
     long amount_;
-    bool isCompleted;
+    bool isCompleted_;
 };
 
 class ScreenRefresher : public Noncopyable
@@ -64,7 +64,7 @@ public:
 
     void rePrint(long newValue)
     {
-        std::string newBar =  progressBar_.getBar(newValue);
+        std::string newBar =  progressBar_.GetBar(newValue);
         backSpace(formerLength_);
         std::cout << newBar;
         std::cout << std::flush;
